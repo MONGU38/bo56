@@ -4,6 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>📦 보물창고</title>
+    <link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#f97316">
+<link rel="icon" type="image/png" sizes="192x192" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📦</text></svg>">
+<link rel="apple-touch-icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📦</text></svg>">
     <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
     <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
     <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
@@ -702,6 +706,35 @@ const [filteredCategories, setFilteredCategories] = useState([]);
         };
 
         ReactDOM.render(<TreasureBoxApp />, document.getElementById('root'));
+        // 서비스 워커 등록
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', function() {
+    navigator.serviceWorker.register('/bo56/sw.js')
+      .then(function(registration) {
+        console.log('Service Worker registered successfully:', registration.scope);
+      })
+      .catch(function(error) {
+        console.log('Service Worker registration failed:', error);
+      });
+  });
+}
+
+// 공유된 데이터 처리
+window.addEventListener('load', function() {
+  const urlParams = new URLSearchParams(window.location.search);
+  const sharedTitle = urlParams.get('title');
+  const sharedText = urlParams.get('text');
+  const sharedUrl = urlParams.get('url');
+  
+  if (sharedTitle || sharedText || sharedUrl) {
+    console.log('공유된 데이터:', {
+      title: sharedTitle,
+      text: sharedText,
+      url: sharedUrl
+    });
+    // 여기서 공유된 데이터를 앱에 추가할 수 있어요
+  }
+});
     </script>
 </body>
 </html>
