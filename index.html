@@ -732,7 +732,9 @@ window.addEventListener('load', function() {
       text: sharedText,
       url: sharedUrl
     });
-    // 여기서 공유된 데이터를 앱에 추가할 수 있어요
+    
+      // 여기서 공유된 데이터를 앱에 추가할 수 있어요
+alert(`공유된 데이터를 받았습니다!\n제목: ${sharedTitle || '없음'}\nURL: ${sharedUrl || '없음'}\n텍스트: ${sharedText || '없음'}\n\n카테고리를 만든 후 수동으로 추가해주세요.`);
   }
 });
     </script>
