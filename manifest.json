@@ -1,23 +1,18 @@
 {
   "name": "📦 보물창고",
   "short_name": "보물창고",
+  "id": "/bo56/",
   "description": "중요한 자료를 카테고리별로 정리하는 앱",
   "start_url": "/bo56/",
   "display": "standalone",
   "background_color": "#fff7ed",
   "theme_color": "#f97316",
   "orientation": "portrait-primary",
-  "icons": [
+ "icons": [
   {
-    "src": "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📦</text></svg>",
-    "sizes": "192x192",
-    "type": "image/svg+xml",
-    "purpose": "any maskable"
-  },
-  {
-    "src": "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📦</text></svg>",
-    "sizes": "512x512", 
-    "type": "image/svg+xml",
+    "src": "/bo56/bo56png512.png",
+    "sizes": "512x512",
+    "type": "image/png",
     "purpose": "any maskable"
   }
 ],
