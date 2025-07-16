@@ -13,7 +13,13 @@
     "src": "/bo56/bo56png512.png",
     "sizes": "512x512",
     "type": "image/png",
-    "purpose": "any maskable"
+    "purpose": "any"
+  },
+  {
+    "src": "/bo56/bo56png512.png",
+    "sizes": "512x512",
+    "type": "image/png",
+    "purpose": "maskable"
   }
 ],
   "share_target": {
