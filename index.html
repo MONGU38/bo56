@@ -32,7 +32,18 @@
         const Search = ({ size = 16 }) => <span style={{fontSize: size + 'px'}}>🔍</span>;
 
         const TreasureBoxApp = () => {
-          const [categories, setCategories] = useState([]);
+          // localStorage에서 데이터 불러오기
+const loadData = () => {
+  try {
+    const saved = localStorage.getItem('treasureBoxData');
+    return saved ? JSON.parse(saved) : [];
+  } catch (error) {
+    console.error('데이터 불러오기 실패:', error);
+    return [];
+  }
+};
+
+const [categories, setCategories] = useState(loadData());
           const [expandedCategories, setExpandedCategories] = useState(new Set());
           const [expandedItems, setExpandedItems] = useState(new Set());
           const [isCreating, setIsCreating] = useState(false);
@@ -138,9 +149,13 @@ const [filteredCategories, setFilteredCategories] = useState([]);
                   return cat;
                 });
               };
-              setCategories(updateCategories(categories));
+const updatedCategories = updateCategories(categories);
+setCategories(updatedCategories);
+localStorage.setItem('treasureBoxData', JSON.stringify(updatedCategories));
             } else {
-              setCategories([...categories, newCategory]);
+              const updatedCategories = [...categories, newCategory];
+setCategories(updatedCategories);
+localStorage.setItem('treasureBoxData', JSON.stringify(updatedCategories));
             }
 
             setNewCategoryName('');
@@ -164,7 +179,9 @@ const [filteredCategories, setFilteredCategories] = useState([]);
                   children: deleteCategoryRecursive(cat.children)
                 }));
             };
-            setCategories(deleteCategoryRecursive(categories));
+const updatedCategories = deleteCategoryRecursive(categories);
+setCategories(updatedCategories);
+localStorage.setItem('treasureBoxData', JSON.stringify(updatedCategories));
             setShowDeleteConfirm(null);
           };
 
@@ -180,7 +197,9 @@ const [filteredCategories, setFilteredCategories] = useState([]);
                 return cat;
               });
             };
-            setCategories(updateCategories(categories));
+            const updatedCategories = updateCategories(categories);
+setCategories(updatedCategories);
+localStorage.setItem('treasureBoxData', JSON.stringify(updatedCategories));
             setEditingId(null);
           };
 
@@ -244,7 +263,9 @@ const [filteredCategories, setFilteredCategories] = useState([]);
               });
             };
 
-            setCategories(updateCategories(categories));
+            const updatedCategories = updateCategories(categories);
+setCategories(updatedCategories);
+localStorage.setItem('treasureBoxData', JSON.stringify(updatedCategories));
             setAddingItemTo(null);
             setEditingItem(null);
             setItemForm({ title: '', url: '', memo: '' });
@@ -271,7 +292,9 @@ const [filteredCategories, setFilteredCategories] = useState([]);
                 return cat;
               });
             };
-            setCategories(updateCategories(categories));
+            const updatedCategories = updateCategories(categories);
+setCategories(updatedCategories);
+localStorage.setItem('treasureBoxData', JSON.stringify(updatedCategories));
             setShowDeleteConfirm(null);
           };
 
